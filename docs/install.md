@@ -61,7 +61,7 @@ Get-ChildItem skills -Directory | ForEach-Object {
 In Claude Code, run:
 
 ```text
-/plugin marketplace add DynAax-AB/d365fo-functional-skills
+/plugin marketplace add DynAax-AB/dynaax-d365fo-functional-skills
 /plugin install d365fo-functional-skills@d365fo-functional-skills
 ```
 
