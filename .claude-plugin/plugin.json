@@ -1,0 +1,10 @@
+{
+  "name": "d365fo-functional-skills",
+  "description": "AI skills for Dynamics 365 Finance and Supply Chain Management functional consultants and key users: posting errors, posting setup, parameters and key-user checklists.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Nurlin Aberra"
+  },
+  "license": "MIT",
+  "keywords": ["dynamics-365", "finance-and-operations", "d365fo", "functional-consultant", "key-user"]
+}

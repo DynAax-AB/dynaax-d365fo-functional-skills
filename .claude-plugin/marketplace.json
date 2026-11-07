@@ -1,0 +1,14 @@
+{
+  "name": "d365fo-functional-skills",
+  "description": "Free AI skills for Dynamics 365 Finance and Supply Chain Management functional consultants and key users.",
+  "owner": {
+    "name": "Nurlin Aberra"
+  },
+  "plugins": [
+    {
+      "name": "d365fo-functional-skills",
+      "source": "./",
+      "description": "AI skills for Dynamics 365 F&O functional consultants and key users."
+    }
+  ]
+}
