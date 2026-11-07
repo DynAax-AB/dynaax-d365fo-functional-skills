@@ -1,0 +1,55 @@
+name: Wrong or weak answer
+description: A skill gave an answer that's wrong, out of date or missing something.
+title: "[Answer] "
+labels: ["answer-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make the skills more accurate.
+        **Please don't paste customer data**: no company names, account numbers, amounts or people's names. Made-up values are fine.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      options:
+        - posting-error-explainer
+        - posting-setup-explainer
+        - parameter-guide
+        - key-user-checklists
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What did you ask?
+      description: The question or error text you gave the assistant.
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: What was wrong with the answer?
+      description: For example a wrong menu path, a missing cause, or advice that doesn't apply.
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What should it have said?
+      description: Link to Microsoft Learn if you can.
+  - type: input
+    id: version
+    attributes:
+      label: F&O version
+      placeholder: "10.0.45"
+  - type: dropdown
+    id: assistant
+    attributes:
+      label: Which assistant?
+      options:
+        - Claude (web or desktop)
+        - Claude Code
+        - Copilot Studio
+        - Other

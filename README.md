@@ -1,5 +1,10 @@
 # D365 F&O functional skills
 
+[![Check skills](https://github.com/DynAax-AB/dynaax-d365fo-functional-skills/actions/workflows/check.yml/badge.svg)](https://github.com/DynAax-AB/dynaax-d365fo-functional-skills/actions/workflows/check.yml)
+![Status: draft for review](https://img.shields.io/badge/status-draft%20for%20review-orange)
+[![Works with Claude and Copilot Studio](https://img.shields.io/badge/works%20with-Claude%20%C2%B7%20Copilot%20Studio-8A2BE2)](docs/install.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 Free AI skills that help Dynamics 365 Finance and Supply Chain Management (F&O)
 key users and functional consultants answer everyday questions: why a document
 didn't post, which account it posts to, what a parameter does, and what steps a
@@ -26,6 +31,38 @@ answer those questions the way a good consultant would:
 
 The skills need no access to any F&O environment. They only explain and point
 to where to look; nothing is changed in F&O.
+
+## How it works
+
+```mermaid
+flowchart LR
+    user["🙋 <b>Key user or consultant</b><br/>pastes an error or<br/>asks a question"]
+    ai["🤖 <b>AI assistant</b><br/>Claude or a<br/>Copilot Studio agent"]
+    skills["🧩 <b>These skills</b><br/>🧾 posting-error-explainer<br/>🗺️ posting-setup-explainer<br/>🎛️ parameter-guide<br/>✅ key-user-checklists"]
+    answer["💡 <b>Answer</b><br/>likely causes in order,<br/>menu paths to check,<br/>who should fix it"]
+    learn["📚 <b>Microsoft Learn</b><br/>linked for the details"]
+    person["🧑‍💼 <b>Consultant or partner</b><br/>when a person is needed"]
+
+    user --> ai
+    skills -- "loaded when the<br/>question fits" --> ai
+    ai --> answer
+    answer -.-> learn
+    answer -. "hand over" .-> person
+
+    classDef people fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#0f172a
+    classDef ai fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#0f172a
+    classDef skill fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#0f172a
+    classDef output fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a
+    classDef link fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a
+    class user,person people
+    class ai ai
+    class skills skill
+    class answer output
+    class learn link
+```
+
+The skills are instructions and reference notes for the AI assistant. They never
+connect to F&O, so nothing in your system is read or changed.
 
 ## What's inside
 

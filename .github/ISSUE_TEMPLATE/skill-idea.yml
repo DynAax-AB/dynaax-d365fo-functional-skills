@@ -1,0 +1,22 @@
+name: Idea for a skill
+description: A question key users ask often that a new or existing skill could answer.
+title: "[Idea] "
+labels: ["idea"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What do people ask?
+      description: Two or three real examples of the question, in the words key users use.
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How is it answered today?
+      description: Who answers it, and how long people wait.
+  - type: input
+    id: area
+    attributes:
+      label: F&O area
+      placeholder: "Accounts payable, inventory, fixed assets..."

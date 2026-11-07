@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 ONLINE = "--online" in sys.argv
+OWN_REPO_URL = "https://github.com/DynAax-AB/dynaax-d365fo-functional-skills"
 
 REQUIRED_SECTIONS = [
     "## When to use this skill",
@@ -135,6 +136,9 @@ class SkillChecks(unittest.TestCase):
     def test_links_open(self):
         urls = sorted({u for p in ROOT.rglob("*.md") if ".git" not in p.parts for u in links_in(p)})
         urls = [u for u in urls if "..." not in u and "<" not in u]
+        # Links to this repo's own GitHub pages (badges, Actions) only open
+        # once the repo is public, so they're left out.
+        urls = [u for u in urls if not u.startswith(OWN_REPO_URL)]
         for url in urls:
             with self.subTest(url=url):
                 request = urllib.request.Request(url, headers={"User-Agent": "skill-link-check"})
