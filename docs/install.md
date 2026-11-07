@@ -61,11 +61,10 @@ Get-ChildItem skills -Directory | ForEach-Object {
 In Claude Code, run:
 
 ```text
-/plugin marketplace add <github-user>/d365fo-functional-skills
+/plugin marketplace add DynAax-AB/d365fo-functional-skills
 /plugin install d365fo-functional-skills@d365fo-functional-skills
 ```
 
-Replace `<github-user>` with the account the repository is published under.
 Restart Claude Code if the skills don't show straight away.
 
 ### By copying the folders
