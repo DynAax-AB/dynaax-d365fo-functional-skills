@@ -15,14 +15,16 @@ file and a `references/` folder.
 ## Claude on the web or desktop app
 
 Skills work in claude.ai and the Claude desktop app on plans where Skills are
-available. Code execution must be switched on in your settings.
+available. Code execution and file creation must be turned on under
+**Settings > Capabilities**. On Team and Enterprise plans, an owner controls this.
 
 1. Download the skill zip files from the repository's **Releases** page, one per
    skill. Or build them yourself (see [Build the zip files](#build-the-zip-files)).
-2. In Claude, open **Settings > Capabilities > Skills** and choose **Upload skill**.
-3. Upload one zip at a time. Each skill shows in the list and can be switched on
-   or off.
-4. Start a new chat and ask an F&O question, for example: *"Why didn't my vendor
+2. In Claude, open **Customize > Skills**.
+3. Select **+**, then **+ Create skill**, then **Upload a skill**. Upload one zip
+   at a time.
+4. Turn each skill on from its row in the list.
+5. Start a new chat and ask an F&O question, for example: *"Why didn't my vendor
    invoice post? The error says Account number for transaction type Vendor
    balance does not exist."* Claude picks the right skill by itself.
 
@@ -80,10 +82,40 @@ On Windows, `~` is your user folder, for example `C:\Users\you\.claude\skills\`.
 
 ## Microsoft Copilot Studio
 
-Copilot Studio doesn't read skill files as skills, but it can use them as
-knowledge. This works well for a support-desk agent in Teams.
+Copilot Studio can [upload skill files](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/skills-add-existing) directly on agents built with
+the Microsoft Copilot harness. Using these agents can consume Copilot Credits.
 
-1. In Copilot Studio, create an agent (or open an existing one).
+The zips on the Releases page are built for Claude, with the skill inside a
+folder. For Copilot Studio, make zips with `SKILL.md` at the top level. From the
+repository folder on macOS or Linux:
+
+```bash
+mkdir -p dist && for s in skills/*/; do n=$(basename "$s"); (cd "$s" && zip -r "../../dist/$n-copilot.zip" . -x test-questions.md); done
+```
+
+On Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force dist | Out-Null
+Get-ChildItem skills -Directory | ForEach-Object {
+  $files = Get-ChildItem $_.FullName -Exclude test-questions.md
+  Compress-Archive -Path $files.FullName -DestinationPath "dist\$($_.Name)-copilot.zip" -Force
+}
+```
+
+Then add each skill to your agent:
+
+1. Open your agent in Copilot Studio and select the **Build** tab.
+2. In the components panel, select **Skills**.
+3. In **Add skill**, select **Upload a skill**, then upload one zip.
+4. Repeat for each skill, then test in the **Preview** tab with the questions in
+   each skill's `test-questions.md`.
+
+### If your agent doesn't show Skills
+
+Older agents can use the same files as knowledge:
+
+1. In Copilot Studio, open the agent.
 2. Under **Knowledge**, choose **Add knowledge > Files** and upload:
    - each `SKILL.md` (rename them so you can tell them apart, for example
      `posting-error-explainer.md`), and
@@ -115,13 +147,13 @@ or menu is, say so rather than guessing.
 ## Other AI assistants
 
 Any assistant that accepts custom instructions or uploaded documents can use the
-skills the same way as Copilot Studio: upload the `SKILL.md` and `references/`
-files as documents, and paste the instructions above.
+skills as knowledge: upload the `SKILL.md` and `references/` files as documents,
+and paste the instructions above.
 
 ---
 
 ## Updating
 
 When a new version is released, upload the new zip (Claude), pull the plugin
-update (Claude Code: `/plugin marketplace update`), or replace the knowledge
-files (Copilot Studio).
+update (Claude Code: `/plugin marketplace update`), or use **Replace** on the
+uploaded skill (Copilot Studio).

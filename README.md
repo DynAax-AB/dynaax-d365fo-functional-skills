@@ -86,7 +86,7 @@ installed:
 ## Install
 
 **Claude (web or desktop app):** download the skill zips from Releases, then
-Settings > Capabilities > Skills > Upload skill.
+Customize > Skills > + > Create skill > Upload a skill.
 
 **Claude Code:**
 
@@ -95,8 +95,8 @@ Settings > Capabilities > Skills > Upload skill.
 /plugin install d365fo-functional-skills@d365fo-functional-skills
 ```
 
-**Copilot Studio:** add the skill files to an agent as knowledge, and paste the
-instructions from the install guide.
+**Copilot Studio:** upload each skill to your agent under Build > Skills > Add
+skill > Upload a skill. The install guide shows how to package it.
 
 Full steps for each: [docs/install.md](docs/install.md).
 
